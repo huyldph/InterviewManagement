@@ -2,6 +2,7 @@ package org.example.interviewmanagement.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -52,22 +53,5 @@ public class Candidate {
     @JoinColumn(name = "recruiterOwner")
     private User recruiterOwner;
 
-    public Candidate(Integer candidateId, String fullName, String email, String gender, LocalDate dob, String address, String phoneNumber, String cvFilePath, String currentPosition, String skills, Integer yearsOfExperience, String highestEducation, String status, String note, User recruiterOwner) {
-        this.candidateId = candidateId;
-        this.fullName = fullName;
-        this.email = email;
-        this.gender = gender;
-        this.dob = dob;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.cvFilePath = cvFilePath;
-        this.currentPosition = currentPosition;
-        this.skills = skills;
-        this.yearsOfExperience = yearsOfExperience;
-        this.highestEducation = highestEducation;
-        this.status = status;
-        this.note = note;
-        this.recruiterOwner = recruiterOwner;
-    }
 }
 

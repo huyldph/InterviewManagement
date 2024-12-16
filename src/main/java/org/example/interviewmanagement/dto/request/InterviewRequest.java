@@ -1,4 +1,4 @@
-package org.example.interviewmanagement.dto;
+package org.example.interviewmanagement.dto.request;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -11,14 +11,14 @@ import java.time.LocalDateTime;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class InterviewDto {
-    private Integer interviewId;
-
+public class InterviewRequest {
     private String title;
 
-    private String candidateName;
+    private Integer candidateId;
 
-    private String interviewer;
+    private Integer userId;
+
+    private Integer jobId;
 
     private LocalDateTime scheduleStart;
 
@@ -29,16 +29,4 @@ public class InterviewDto {
     private String meetingLink;
 
     private String location;
-
-    private String result;
-
-    private String status = "Scheduled";
-
-    private String jobTitle;
-
-    private Integer candidateId;
-
-    private Integer userId;
-
-    private Integer jobId;
 }

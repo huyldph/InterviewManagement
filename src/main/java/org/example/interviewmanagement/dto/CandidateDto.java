@@ -41,4 +41,6 @@ public class CandidateDto {
     private String note;
 
     private String userName;
+
+    private Integer userId;
 }

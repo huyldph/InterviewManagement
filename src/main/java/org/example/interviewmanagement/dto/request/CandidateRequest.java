@@ -1,6 +1,5 @@
 package org.example.interviewmanagement.dto.request;
 
-import jakarta.persistence.ElementCollection;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -13,7 +12,7 @@ import java.util.List;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class CandidateRequestDto {
+public class CandidateRequest {
     private Integer candidateId;
 
     private String fullName;

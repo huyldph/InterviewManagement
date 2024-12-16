@@ -1,6 +1,7 @@
 package org.example.interviewmanagement.service;
 
 import org.example.interviewmanagement.dto.InterviewDto;
+import org.example.interviewmanagement.entities.Interview;
 import org.example.interviewmanagement.repository.InterviewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -14,5 +15,21 @@ public class InterviewService {
 
     public Page<InterviewDto> getAllInterviews(Pageable pageable) {
         return interviewRepository.getAllInterviews(pageable);
+    }
+
+    public InterviewDto findByInterviewId(Integer interviewId) {
+        return interviewRepository.findByInterviewId(interviewId);
+    }
+
+    public void saveInterview(Interview entity) {
+        interviewRepository.save(entity);
+    }
+
+    public void deleteInterview(Integer interviewId) {
+        interviewRepository.deleteById(interviewId);
+    }
+
+    public void updateInterview(Interview entity) {
+        interviewRepository.save(entity);
     }
 }

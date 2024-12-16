@@ -28,7 +28,8 @@ public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
                 c.highestEducation,
                 c.status,
                 c.note,
-                u.fullName
+                u.fullName,
+                u.userId
             ) from Candidate c join c.recruiterOwner u
             """)
     Page<CandidateDto> getAllCandidates(Pageable pageable);
@@ -49,7 +50,8 @@ public interface CandidateRepository extends JpaRepository<Candidate, Integer> {
                 c.highestEducation,
                 c.status,
                 c.note,
-                u.fullName
+                u.fullName,
+                u.userId
             ) from Candidate c join c.recruiterOwner u
             where c.candidateId = :candidateId
             """)

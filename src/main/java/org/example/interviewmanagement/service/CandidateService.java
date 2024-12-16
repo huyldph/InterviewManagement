@@ -25,4 +25,16 @@ public class CandidateService {
     public CandidateDto findByCandidateId(Integer candidateId) {
         return candidateRepository.findByCandidateId(candidateId);
     }
+
+    public void deleteCandidate(Integer candidateId) {
+        candidateRepository.deleteById(candidateId);
+    }
+
+    public void updateCandidate(Candidate candidate) {
+        candidateRepository.save(candidate);
+    }
+
+    public Candidate findById(Integer candidateId) {
+        return candidateRepository.findById(candidateId).orElse(null);
+    }
 }

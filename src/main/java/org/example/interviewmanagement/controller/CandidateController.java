@@ -2,7 +2,7 @@ package org.example.interviewmanagement.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.example.interviewmanagement.dto.CandidateDto;
-import org.example.interviewmanagement.dto.request.CandidateRequestDto;
+import org.example.interviewmanagement.dto.request.CandidateRequest;
 import org.example.interviewmanagement.entities.Candidate;
 import org.example.interviewmanagement.service.CandidateService;
 import org.example.interviewmanagement.service.UserService;
@@ -36,7 +36,7 @@ public class CandidateController {
     }
 
     @PostMapping("/candidates")
-    public ResponseEntity<?> saveCandidate(@RequestBody CandidateRequestDto request) {
+    public ResponseEntity<?> saveCandidate(@RequestBody CandidateRequest request) {
         try {
             Candidate candidate = new Candidate();
             candidate.setFullName(request.getFullName());
@@ -72,6 +72,47 @@ public class CandidateController {
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error fetching candidate: " + e.getMessage());
+        }
+    }
+
+    @PutMapping("/candidates/update/{id}")
+    public ResponseEntity<?> updateCandidate(@PathVariable Integer id, @RequestBody CandidateRequest request) {
+        try {
+            Candidate candidate = new Candidate();
+            candidate.setCandidateId(id);
+            candidate.setFullName(request.getFullName());
+            candidate.setEmail(request.getEmail());
+            candidate.setGender(request.getGender());
+            candidate.setDob(request.getDob());
+            candidate.setAddress(request.getAddress());
+            candidate.setPhoneNumber(request.getPhoneNumber());
+            candidate.setCvFilePath(request.getCvFilePath());
+            candidate.setCurrentPosition(request.getCurrentPosition());
+
+            ObjectMapper objectMapper = new ObjectMapper();
+            String skillsJson = objectMapper.writeValueAsString(request.getSkills());
+            candidate.setSkills(skillsJson);
+            candidate.setYearsOfExperience(request.getYearsOfExperience());
+            candidate.setHighestEducation(request.getHighestEducation());
+            candidate.setStatus(request.getStatus());
+            candidate.setNote(request.getNote());
+            candidate.setRecruiterOwner(userService.findByUserId(request.getUserId()));
+            candidateService.updateCandidate(candidate);
+            return ResponseEntity.ok("Candidate updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error updating candidate: " + e.getMessage());
+        }
+    }
+
+    @DeleteMapping("/candidates/{id}")
+    public ResponseEntity<?> deleteCandidate(@PathVariable Integer id) {
+        try {
+            candidateService.deleteCandidate(id);
+            return ResponseEntity.ok("Candidate deleted successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error deleting candidate: " + e.getMessage());
         }
     }
 }

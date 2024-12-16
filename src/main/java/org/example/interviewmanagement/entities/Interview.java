@@ -25,11 +25,15 @@ public class Interview {
 
     private String notes;
 
-    private String status = "Scheduled";
+    private String status = "Open";
 
     private LocalDateTime createdDate = LocalDateTime.now();
 
     private LocalDateTime lastModifiedDate = LocalDateTime.now();
+
+    private String meetingLink;
+
+    private String location;
 
     @ManyToOne
     @JoinColumn(name = "jobId")

@@ -18,6 +18,7 @@ public class Job {
 
     private String title;
 
+    @Column(name = "requiredSkills", columnDefinition = "TEXT")
     private String requiredSkills;
 
     private LocalDate startDate;
@@ -30,8 +31,10 @@ public class Job {
 
     private String workingAddress;
 
+    @Column(name = "benefits", columnDefinition = "TEXT")
     private String benefits;
 
+    @Column(name = "level", columnDefinition = "TEXT")
     private String level;
 
     private String description;

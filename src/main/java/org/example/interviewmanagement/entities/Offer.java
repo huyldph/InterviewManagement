@@ -2,6 +2,8 @@ package org.example.interviewmanagement.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -21,6 +23,20 @@ public class Offer {
 
     private String department;
 
+    private String position;
+
+    private String contractType;
+
+    private String level;
+
+    private LocalDate contractPeriodStart;
+
+    private LocalDate contractPeriodEnd;
+
+    private LocalDate dueDate;
+
+    private Double baseSalary;
+
     private LocalDateTime createdDate = LocalDateTime.now();
 
     private LocalDateTime lastModifiedDate = LocalDateTime.now();
@@ -30,10 +46,10 @@ public class Offer {
     private Candidate candidate;
 
     @ManyToOne
-    @JoinColumn(name = "jobId")
-    private Job job;
-
-    @ManyToOne
     @JoinColumn(name = "createdBy")
     private User createdBy;
+
+    @ManyToOne
+    @JoinColumn(name = "interviewId")
+    private Interview interview;
 }

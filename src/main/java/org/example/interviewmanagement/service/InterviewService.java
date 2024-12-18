@@ -21,6 +21,10 @@ public class InterviewService {
         return interviewRepository.findByInterviewId(interviewId);
     }
 
+    public Interview findById(Integer interviewId) {
+        return interviewRepository.findById(interviewId).orElse(null);
+    }
+
     public void saveInterview(Interview entity) {
         interviewRepository.save(entity);
     }

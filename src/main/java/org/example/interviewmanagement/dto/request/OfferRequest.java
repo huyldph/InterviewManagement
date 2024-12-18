@@ -1,5 +1,4 @@
-package org.example.interviewmanagement.dto;
-
+package org.example.interviewmanagement.dto.request;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,9 +10,7 @@ import java.time.LocalDate;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class OfferDto {
-    private Integer offerId;
-
+public class OfferRequest {
     private String status = "Waiting for approval";
 
     private String notes;
@@ -39,10 +36,4 @@ public class OfferDto {
     private LocalDate dueDate;
 
     private Double baseSalary;
-
-    private String candidateName;
-
-    private String candidateEmail;
-
-    private String approvedBy;
 }
